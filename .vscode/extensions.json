@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "ofhumanbondage.react-proptypes-intellisense",
+    "mgmcdermott.vscode-language-babel",
+    "editorconfig.editorconfig",
+    "prisma.prisma",
+    "graphql.vscode-graphql"
+  ],
+  "unwantedRecommendations": []
+}
