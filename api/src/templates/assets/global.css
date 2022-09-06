@@ -1,0 +1,22 @@
+* {
+  font-family: sans-serif;
+}
+
+body > * + * {
+  margin-top: 1.25rem;
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+.button {
+  background-color: cadetblue;
+  border-radius: 0.25rem;
+  color: white;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 0.075rem;
+  text-decoration: none;
+  width: fit-content;
+}
