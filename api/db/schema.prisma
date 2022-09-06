@@ -4,8 +4,10 @@ datasource db {
 }
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = "native"
+  provider        = "prisma-client-js"
+  binaryTargets   = "native"
+  // See: https://redwoodjs.com/docs/services#validateuniqueness
+  previewFeatures = ["interactiveTransactions"]
 }
 
 model Organization {
@@ -28,6 +30,7 @@ model User {
   updatedAt DateTime @updatedAt
 
   email               String    @unique
+  name                String
   hashedPassword      String
   salt                String
   resetToken          String?
