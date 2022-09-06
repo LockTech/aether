@@ -27,12 +27,12 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  email               String     @unique
+  email               String    @unique
   hashedPassword      String
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  roles               UserRole[] @default([MEMBER])
+  roles               UserRole  @default(MEMBER)
 
   organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String?
@@ -45,11 +45,11 @@ model UserInvite {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  code      String     @unique
-  confirmed Boolean    @default(false)
+  code      String   @unique
+  confirmed Boolean  @default(false)
   email     String
   name      String?
-  roles     UserRole[] @default([MEMBER])
+  roles     UserRole @default(MEMBER)
 
   organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String?
