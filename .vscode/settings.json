@@ -7,6 +7,9 @@
     ".env.defaults": "env",
     ".env.example": "env"
   },
+  "material-icon-theme.folders.associations": {
+    "directives": "pipe"
+  },
   "[prisma]": {
     "editor.formatOnSave": true
   }
