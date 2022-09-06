@@ -3,6 +3,8 @@ import type { User } from '@prisma/client'
 import { DbAuthHandler } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
+import { confirmUserInvite } from 'src/services/userInvites'
+import { validateEmail, validateName } from 'src/validators/user'
 
 export const handler = async (event, context) => {
   const forgotPasswordOptions = {
@@ -18,9 +20,7 @@ export const handler = async (event, context) => {
     // You could use this return value to, for example, show the email
     // address in a toast message so the user will know it worked and where
     // to look for the email.
-    handler: async (user: User) => {
-      return user
-    },
+    handler: async (user: User) => user,
 
     // How long the resetToken is valid for, in seconds (default is 24 hours)
     expires: 60 * 60 * 24,
@@ -47,9 +47,10 @@ export const handler = async (event, context) => {
     // didn't validate their email yet), throw an error and it will be returned
     // by the `logIn()` function from `useAuth()` in the form of:
     // `{ message: 'Error message' }`
-    handler: async (user: User) => {
-      return user
-    },
+    handler: async (user: User) => user,
+
+    // How long a user will remain logged in, in seconds
+    expires: 60 * 60 * 24 * 365 * 10,
 
     errors: {
       usernameOrPasswordMissing: 'Both username and password are required',
@@ -59,9 +60,6 @@ export const handler = async (event, context) => {
       // to narrow down if it's the username or password that's incorrect
       incorrectPassword: 'Incorrect password for ${username}',
     },
-
-    // How long a user will remain logged in, in seconds
-    expires: 60 * 60 * 24 * 365 * 10,
   }
 
   const resetPasswordOptions = {
@@ -69,9 +67,7 @@ export const handler = async (event, context) => {
     // the database. Returning anything truthy will automatically log the user
     // in. Return `false` otherwise, and in the Reset Password page redirect the
     // user to the login page.
-    handler: async (user: User) => {
-      return user
-    },
+    handler: async (user: User) => user,
 
     // If `false` then the new password MUST be different from the current one
     allowReusedPassword: true,
@@ -104,10 +100,17 @@ export const handler = async (event, context) => {
     //
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
-    handler: ({ username, hashedPassword, salt, userAttributes: _ }) => {
+    handler: async ({ username, hashedPassword, salt, userAttributes }) => {
+      validateEmail(username)
+      validateName(userAttributes.name)
+
+      const confirm = await confirmUserInvite(userAttributes.code, username)
+
       return db.user.create({
         data: {
           email: username,
+          name: userAttributes.name,
+          organizationId: confirm.organizationId,
           hashedPassword: hashedPassword,
           salt: salt,
         },
