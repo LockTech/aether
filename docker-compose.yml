@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: supabase/postgres:14.1.0
+    env_file:
+      - .env.defaults
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
