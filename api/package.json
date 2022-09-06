@@ -10,6 +10,7 @@
     "stripe": "^10.7.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "@types/email-templates": "^10.0.0",
     "@types/pug": "^2.0.6"
   }

@@ -2171,6 +2171,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@faker-js/faker@npm:^7.5.0":
+  version: 7.5.0
+  resolution: "@faker-js/faker@npm:7.5.0"
+  checksum: 0deae2c805a66de7b1fa2e8bbceb66c2eec4cd982239e56d190fcb66e86d2db80b89e84bb2813806513f87422eba6d01c82fe63804150a18ffb64c48f93878fb
+  languageName: node
+  linkType: hard
+
 "@fastify/ajv-compiler@npm:^1.0.0":
   version: 1.1.0
   resolution: "@fastify/ajv-compiler@npm:1.1.0"
@@ -7600,6 +7607,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:api"
   dependencies:
+    "@faker-js/faker": ^7.5.0
     "@redwoodjs/api": 2.2.3
     "@redwoodjs/graphql-server": 2.2.3
     "@types/email-templates": ^10.0.0
