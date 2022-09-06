@@ -12,8 +12,9 @@ model Organization {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  //
-  users     User[]
+
+  users       User[]
+  userInvites UserInvite[]
 }
 
 enum UserRole {
@@ -22,19 +23,36 @@ enum UserRole {
 }
 
 model User {
-  id                  String        @id @default(uuid())
-  createdAt           DateTime      @default(now())
-  updatedAt           DateTime      @updatedAt
-  //
-  email               String        @unique
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  email               String     @unique
   hashedPassword      String
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  role                UserRole      @default(MEMBER)
-  //
-  organization        Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  organizationId      String?
+  roles               UserRole[] @default([MEMBER])
+
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String?
+
+  @@unique([id, organizationId], name: "tenant")
+}
+
+model UserInvite {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  code      String     @unique
+  confirmed Boolean    @default(false)
+  email     String
+  name      String?
+  roles     UserRole[] @default([MEMBER])
+
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String?
 
   @@unique([id, organizationId], name: "tenant")
 }
