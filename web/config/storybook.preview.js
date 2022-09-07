@@ -1,16 +1,16 @@
 import * as React from 'react'
 
-import ChakraProvider from '../src/components/ChakraProvider'
+import Provider from '../src/components/Provider'
 
-const withChakra = (StoryFn) => {
+const withProvider = (StoryFn) => {
   return (
-    <ChakraProvider>
+    <Provider>
       <StoryFn />
-    </ChakraProvider>
+    </Provider>
   )
 }
 
-export const decorators = [withChakra]
+export const decorators = [withProvider]
 
 export const parameters = {
   options: {
