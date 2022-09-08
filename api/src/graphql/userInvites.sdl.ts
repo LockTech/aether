@@ -26,8 +26,13 @@ export const schema = gql`
     email: String!
   }
 
+  input ResendInviteInput {
+    email: String!
+  }
+
   type Mutation {
     inviteUser(input: InviteInput!): UserInvite! @requireAuth(roles: "ADMIN")
     signupUser(input: SignupInput!): UserInvite! @skipAuth
+    resendInvite(input: ResendInviteInput!): Boolean @skipAuth
   }
 `

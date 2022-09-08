@@ -133,3 +133,32 @@ export const signupUser: MutationResolvers['signupUser'] = async ({
 
   return res
 }
+
+export const resendInvite: MutationResolvers['resendInvite'] = async ({
+  input: { email },
+}) => {
+  validateEmail(email)
+
+  const { confirmed, createdAt } = inviteWhere()
+
+  const invite = await db.userInvite.findFirst({
+    where: {
+      confirmed,
+      createdAt,
+      email,
+    },
+  })
+
+  if (!invite) return false
+
+  const link = generateInviteLink(
+    invite.code,
+    invite.email,
+    invite.name,
+    typeof invite.organizationId !== 'string'
+  )
+
+  await sendEmail('resend_invitation', invite.email, { link })
+
+  return false
+}
