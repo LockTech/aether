@@ -20,10 +20,32 @@ import { db } from 'src/lib/db'
  * seen if someone were to open the Web Inspector in their browser.
  */
 export const getCurrentUser = async (session) => {
-  return await db.user.findUnique({
+  const user = await db.user.findUnique({
     where: { id: session.id },
-    select: { id: true, name: true, organizationId: true, roles: true },
+    select: {
+      id: true,
+      name: true,
+      organizationId: true,
+      roles: true,
+      organization: {
+        select: {
+          billing: {
+            select: {
+              subscriptionActive: true,
+            },
+          },
+        },
+      },
+    },
   })
+
+  return {
+    id: user.id,
+    name: user.name,
+    organizationId: user.organizationId,
+    roles: user.roles,
+    subscriptionActive: user?.organization?.billing?.subscriptionActive,
+  }
 }
 
 /**
@@ -34,6 +56,8 @@ export const getCurrentUser = async (session) => {
 export const isAuthenticated = (): boolean => {
   return !!context.currentUser
 }
+
+export const hasOrganization = () => !!context.currentUser.organizationId
 
 /**
  * When checking role membership, roles can be a single value, a list, or none.
@@ -80,6 +104,12 @@ export const hasRole = (roles: AllowedRoles): boolean => {
   return false
 }
 
+interface RequireAuthArgs {
+  organization?: boolean
+  roles: AllowedRoles
+  subscribed?: boolean
+}
+
 /**
  * Use requireAuth in your services to check that a user is logged in,
  * whether or not they are assigned a role, and optionally raise an
@@ -94,12 +124,32 @@ export const hasRole = (roles: AllowedRoles): boolean => {
  *
  * @see https://github.com/redwoodjs/redwood/tree/main/packages/auth for examples
  */
-export const requireAuth = ({ roles }: { roles: AllowedRoles }) => {
+export const requireAuth = ({
+  organization = true,
+  roles,
+  subscribed = true,
+}: RequireAuthArgs) => {
   if (!isAuthenticated()) {
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
   if (roles && !hasRole(roles)) {
     throw new ForbiddenError("You don't have access to do that.")
+  }
+
+  const hasAnOrganization = hasOrganization()
+
+  if (
+    (organization && !hasAnOrganization) ||
+    (!organization && hasAnOrganization)
+  ) {
+    throw new AuthenticationError("You don't have permission to do that.")
+  }
+
+  if (
+    hasAnOrganization &&
+    subscribed !== context.currentUser.subscriptionActive
+  ) {
+    throw new AuthenticationError("You don't have permission to do that.")
   }
 }

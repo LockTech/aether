@@ -15,8 +15,26 @@ model Organization {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  email String @unique
+  name  String
+
+  billing     Billing?
   users       User[]
   userInvites UserInvite[]
+}
+
+model Billing {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  customerId         String  @unique
+  subscriptionActive Boolean @default(false)
+  subscriptionId     String?
+  subscriptionUnpaid Boolean @default(false)
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String       @unique
 }
 
 enum UserRole {
