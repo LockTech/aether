@@ -6,6 +6,8 @@ export const standard = defineScenario({
   organization: {
     one: {
       data: {
+        email: faker.internet.email(),
+        name: faker.company.name(),
         id: organizationId,
       },
     },
