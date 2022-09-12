@@ -7,12 +7,20 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
+import { useEffect } from 'react'
+
+import { useAuth } from '@redwoodjs/auth'
 import { Private, Router, Route, Set } from '@redwoodjs/router'
 
 import AuthLayout from 'src/layouts/AuthLayout'
 import DashboardLayout from 'src/layouts/DashboardLayout'
+import Sentry from 'src/lib/sentry'
 
 const Routes = () => {
+  const { currentUser, isAuthenticated } = useAuth()
+
+  useEffect(() => (isAuthenticated ? Sentry.setUser(currentUser) : Sentry.setUser(null)), [currentUser, isAuthenticated])
+
   return (
     <Router>
       <Route notfound page={NotFoundPage} />
