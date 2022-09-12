@@ -1,0 +1,23 @@
+name: CI — Quality Assurance 🕵️‍♀️
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths-ignore:
+      - readme.md
+      - .vscode/**
+      - api/generators/**
+      - api/types/**
+      - web/generators/**
+      - web/types/**
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Redwood Build, Lint, Diagnostics, and Tests
+        uses: redwoodjs/project-ci-action@v0.1.1
