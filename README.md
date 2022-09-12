@@ -1,6 +1,7 @@
-<div style="text-align:center;">
-  <p style="font-size:2.5rem;font-weight:500;margin-bottom:0.75rem;">☁️&nbsp;&nbsp;&nbsp;Aether</p>
-  <p style="font-size:1rem;font-weight:500;margin-bottom:2rem;">(a) Boilerplate for the <a href="https://redwoodjs.com">RedwoodJS framework</a></p>
+<div align="center">
+  <h1>☁️&nbsp;&nbsp;&nbsp;Aether</h1>
+  <p>(a) Boilerplate for the <a href="https://redwoodjs.com">RedwoodJS framework</a></p>
+  <br />
 </div>
 
 Aether provides an additional set of opinions to the RedwoodJS framework — aiming to further the decrease to time-to-market for software products. These opinionations include:
