@@ -14,10 +14,10 @@ Aether provides a set of opinionations to RedwoodJS applications — aiming to f
   - RBAC
 - [Chakra UI](https://chakra-ui.com/)
 - [Emailing](https://github.com/forwardemail/email-templates)
-- Local services (i.e. Postgres, Redis, ...) via [Docker Compose](https://docs.docker.com/compose/)
-- Pull-request [quality assurance](https://github.com/redwoodjs/project-ci-action)
+- [PR quality assurances](https://github.com/redwoodjs/project-ci-action)
+- Local services — i.e. Postgres, Redis, ... (via [Docker Compose](https://docs.docker.com/compose/))
 - Subscription-only access (via [Stripe](https://stripe.com/))
-- Support for [Sentry](https://sentry.io/welcome/#) on the API and web sides
+- Error and performance tracking on the API and web (via [Sentry](https://sentry.io/welcome/#))
 
 ## Getting Started
 
