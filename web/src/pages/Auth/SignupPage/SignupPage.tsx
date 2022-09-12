@@ -37,7 +37,7 @@ const RESEND = gql`
 `
 
 const SignupPage = () => {
-  const [signupSuccessful, setSignupSuccessful] = useState(false)
+  const [signupEmail, setSignupEmail] = useState<string>(undefined)
   const [signup] = useToastMutation(SIGNUP)
   const onSubmit = useCallback(
     ({ email }: SignupFormData) =>
@@ -46,7 +46,7 @@ const SignupPage = () => {
         {
           loading: { title: 'Signing up for an account' },
           success: () => {
-            setSignupSuccessful(true)
+            setSignupEmail(email)
             return {
               title: 'Signup successful',
               description:
@@ -62,13 +62,13 @@ const SignupPage = () => {
   const onResend = useCallback(
     () =>
       resend(
-        {},
+        { input: { email: signupEmail } },
         {
           loading: { title: 'Resending signup invitation' },
           success: { title: 'Signup invitation has been resent' },
         }
       ),
-    [resend]
+    [resend, signupEmail]
   )
 
   return (
@@ -77,7 +77,7 @@ const SignupPage = () => {
         title="Signup"
         description="Signup for an account with the Aether application."
       />
-      {signupSuccessful && (
+      {signupEmail && (
         <Alert borderRadius="md" status="success">
           <Stack alignItems="start">
             <AlertTitle>Signup successful!</AlertTitle>
@@ -124,7 +124,7 @@ const SignupPage = () => {
                 }}
               />
             </Field>
-            <Submit alignSelf="end" disabled={signupSuccessful}>
+            <Submit alignSelf="end" disabled={typeof signupEmail === 'string'}>
               Signup
             </Submit>
           </Stack>
@@ -138,7 +138,7 @@ const SignupPage = () => {
         spacing={2}
       >
         <p>Already have an account?</p>
-        <Link to={routes.authSignup()}>Login</Link>
+        <Link to={routes.authLogin()}>Login</Link>
       </Box>
     </>
   )
