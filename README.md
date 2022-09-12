@@ -15,8 +15,8 @@ Aether provides a set of opinionations to the RedwoodJS framework — aiming to 
 - [Chakra UI](https://chakra-ui.com/)
 - [Emailing](https://github.com/forwardemail/email-templates)
 - Local services (i.e. Postgres, Redis, ...) via [Docker Compose](https://docs.docker.com/compose/)
-- [Pull request quality assurances](https://github.com/redwoodjs/project-ci-action)
-- Subscription access (via [Stripe](https://stripe.com/))
+- [Pull-request quality assurances](https://github.com/redwoodjs/project-ci-action)
+- Subscription-only access (via [Stripe](https://stripe.com/))
 - Support for [Sentry](https://sentry.io/welcome/#) on the API and web sides
 
 ## Getting Started
