@@ -127,7 +127,7 @@ export const signupUser: MutationResolvers['signupUser'] = async ({
   const code = randomStr()
   const link = generateInviteLink(code, email, undefined, true)
 
-  const res = await createInvite(email, { code, email })
+  const res = await createInvite(email, { code, email, roles: 'ADMIN' })
 
   await sendEmail('signup', email, { link })
 

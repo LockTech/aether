@@ -116,6 +116,7 @@ export const handler = async (event, context) => {
           name: userAttributes.name,
           organizationId: confirm.organizationId,
           hashedPassword: hashedPassword,
+          roles: confirm.roles,
           salt: salt,
         },
       })
