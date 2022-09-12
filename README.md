@@ -4,7 +4,7 @@
   <br />
 </div>
 
-Aether provides an additional set of opinions to the RedwoodJS framework — aiming to further the decrease to time-to-market for software products. These opinionations include:
+Aether provides a set of opinionations to the RedwoodJS framework — aiming to further decrease time-to-market for full-stack web applications. These (additional) opinionations include:
 
 - Authentication (via [dbAuth](https://redwoodjs.com/docs/auth/dbauth))
   - Account confirmation
