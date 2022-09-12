@@ -6,6 +6,8 @@ import type { EmailLocals, EmailTemplates } from 'types/email'
 
 import { logger } from 'src/lib/logger'
 
+const TEMPLATE_DIR = '../../templates'
+
 const transport = createTransport({
   // @ts-expect-error RedwoodJS' logger is bunyan-compatible
   logger,
@@ -22,7 +24,7 @@ const client = new Email({
   juiceResources: {
     webResources: {
       images: true,
-      relativeTo: resolve(__dirname, '../templates/assets'),
+      relativeTo: resolve(__dirname, TEMPLATE_DIR, 'assets'),
     },
   },
 })
@@ -35,6 +37,6 @@ export const sendEmail = async <T extends EmailTemplates>(
   await client.send({
     locals,
     message: { from: process.env.EMAIL_FROM, to },
-    template: resolve(__dirname, '../templates', template),
+    template: resolve(__dirname, TEMPLATE_DIR, template),
   })
 }
