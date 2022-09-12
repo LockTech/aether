@@ -7,6 +7,7 @@ import { verifyEvent, WebhookVerificationError } from '@redwoodjs/api/webhooks'
 
 import { db } from 'src/lib/db'
 import { logger } from 'src/lib/logger'
+import Sentry from 'src/lib/sentry'
 import { deleteOrganization } from 'src/services/organizations'
 
 const SUPPORTED_WEBHOOK_TYPES = [
@@ -98,6 +99,8 @@ export const handler = async (event: APIGatewayEvent, _ctx: Context) => {
     }
 
     logger.error({ err }, 'Error handling subscription webhook.')
+
+    Sentry.captureException(err)
 
     return { statusCode: 500 }
   }

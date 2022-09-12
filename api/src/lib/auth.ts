@@ -1,6 +1,7 @@
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
 
 import { db } from 'src/lib/db'
+import Sentry from 'src/lib/sentry'
 
 /**
  * The session object sent in as the first argument to getCurrentUser() will
@@ -39,13 +40,17 @@ export const getCurrentUser = async (session) => {
     },
   })
 
-  return {
+  const currentUser = {
     id: user.id,
     name: user.name,
     organizationId: user.organizationId,
     roles: user.roles,
     subscriptionActive: user?.organization?.billing?.subscriptionActive,
   }
+
+  Sentry.setUser(currentUser)
+
+  return currentUser
 }
 
 /**

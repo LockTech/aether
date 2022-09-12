@@ -20,6 +20,8 @@
     "@redwoodjs/forms": "2.2.3",
     "@redwoodjs/router": "2.2.3",
     "@redwoodjs/web": "2.2.3",
+    "@sentry/react": "^7.12.1",
+    "@sentry/tracing": "^7.12.1",
     "@stripe/react-stripe-js": "^1.10.0",
     "@stripe/stripe-js": "^1.35.0",
     "framer-motion": "^6",

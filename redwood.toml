@@ -11,6 +11,7 @@
   apiUrl = "/.redwood/functions"
   # See: https://redwoodjs.com/docs/environment-variables#web
   includeEnvironmentVariables = [
+    "SENTRY_DSN",
     "STRIPE_PUBLISHABLE_KEY"
   ]
 [api]

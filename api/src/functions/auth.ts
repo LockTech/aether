@@ -4,6 +4,8 @@ import { DbAuthHandler } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/email'
+import { logger } from 'src/lib/logger'
+import Sentry from 'src/lib/sentry'
 import { confirmUserInvite } from 'src/services/userInvites'
 import { validateEmail, validateName } from 'src/validators/user'
 
@@ -168,5 +170,13 @@ export const handler = async (event, context) => {
     signup: signupOptions,
   })
 
-  return await authHandler.invoke()
+  try {
+    return await authHandler.invoke()
+  } catch (err) {
+    logger.error({ err }, 'Authentication error')
+
+    Sentry.captureException(err)
+
+    return { statusCode: 500 }
+  }
 }

@@ -6,6 +6,7 @@ import { verifyEvent, WebhookVerificationError } from '@redwoodjs/api/webhooks'
 
 import { db } from 'src/lib/db'
 import { logger } from 'src/lib/logger'
+import Sentry from 'src/lib/sentry'
 import { stripe } from 'src/lib/stripe'
 
 const SUPPORTED_WEBHOOK_TYPES = ['setup_intent.succeeded']
@@ -68,6 +69,8 @@ export const handler = async (event: APIGatewayEvent, _ctx: Context) => {
     }
 
     logger.error({ err }, 'Error handling setup intent webhook.')
+
+    Sentry.captureException(err)
 
     return { statusCode: 500 }
   }
