@@ -49,7 +49,7 @@ export const handler = async (event: APIGatewayEvent, _ctx: Context) => {
       customer: billing.customerId,
       payment_behavior: 'default_incomplete',
       metadata: { organizationId },
-      items: [],
+      items: [{ price: process.env.STRIPE_SUBSCRIPTION_PRICE_ONE }],
     })
 
     await db.billing.update({
