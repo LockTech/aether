@@ -1,4 +1,4 @@
-import type { MutationResolvers } from 'types/graphql'
+import type { MutationResolvers, OrganizationResolvers } from 'types/graphql'
 
 import { validateUniqueness } from '@redwoodjs/api'
 
@@ -69,4 +69,11 @@ export const deleteOrganization = async ({
   await stripe.customers.del(res.billing.customerId)
 
   return res
+}
+
+export const Organization: OrganizationResolvers = {
+  users: (_, { root }) =>
+    db.user.findMany({ where: { organizationId: root.id } }),
+  userInvites: (_, { root }) =>
+    db.userInvite.findMany({ where: { organizationId: root.id } }),
 }

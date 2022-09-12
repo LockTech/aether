@@ -1,5 +1,5 @@
-import type { Prisma, UserInvite } from '@prisma/client'
-import type { MutationResolvers } from 'types/graphql'
+import type { Prisma, UserInvite as UserInviteModel } from '@prisma/client'
+import type { MutationResolvers, UserInviteResolvers } from 'types/graphql'
 
 import { validate, validateUniqueness } from '@redwoodjs/api'
 
@@ -65,7 +65,7 @@ const createInvite = (
         { message: 'Email has already been invited.' },
         (client) => client.userInvite.create({ data })
       )
-  ) as Promise<UserInvite>
+  ) as Promise<UserInviteModel>
 }
 
 export const confirmUserInvite = async (code: string, email: string) => {
@@ -161,4 +161,9 @@ export const resendInvite: MutationResolvers['resendInvite'] = async ({
   await sendEmail('resend_invitation', invite.email, { link })
 
   return false
+}
+
+export const UserInvite: UserInviteResolvers = {
+  organization: (_, { root }) =>
+    db.userInvite.findUnique({ where: { id: root.id } }).organization(),
 }
