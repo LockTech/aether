@@ -1,0 +1,29 @@
+#
+# TODO: Remove if the "/docs" directory is no longer present
+#
+
+name: CI — Build & Deploy Documentation 📗
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/**
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1.1.13
+
+      - name: Build Documentation
+        run: mdbook build docs
+
+      - name: Deploy Documentation
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        with:
+          folder: docs/book

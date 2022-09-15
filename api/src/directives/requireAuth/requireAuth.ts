@@ -10,8 +10,17 @@ export const schema = gql`
   with an optional set of roles.
   """
   directive @requireAuth(
+    """
+    Whether or not a user has an organization.
+    """
     organization: Boolean = true
+    """
+    Whether or not a user has the given role(s).
+    """
     roles: [String]
+    """
+    Whether or not a user's subscription is active.
+    """
     subscribed: Boolean = true
   ) on FIELD_DEFINITION
 `

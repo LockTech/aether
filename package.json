@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "docs": "mdbook serve docs --open --port 6910"
+  },
   "workspaces": {
     "packages": [
       "api",

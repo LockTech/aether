@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - readme.md
       - .vscode/**
+      - docs/** # TODO: Remove if directory is no longer present
       - api/generators/**
       - api/types/**
       - web/generators/**
