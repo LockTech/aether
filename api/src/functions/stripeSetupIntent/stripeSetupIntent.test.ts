@@ -128,7 +128,7 @@ describe('stripeSetupIntent function', () => {
         customer: billing.customerId,
         payment_behavior: 'default_incomplete',
         metadata: { organizationId },
-        items: [{ price: process.env.STRIPE_SUBSCRIPTION_PRICE_ONE }],
+        items: [{ price: process.env.STRIPE_SUBSCRIPTION_PRICE }],
       })
     }
   )
