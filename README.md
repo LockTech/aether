@@ -8,7 +8,7 @@
 
 See [Aether's documentation](https://locktech.github.io/aether/) for instructions on getting started with the boilerplate.
 
-> Need the original RedwoodJS `README`? [See the `create-redwood-app` package](https://github.com/redwoodjs/redwood/tree/main/packages/create-redwood-app/template#readme) for an up-to-date version.
+> Looking for the original RedwoodJS `README`? [See the `create-redwood-app` package](https://github.com/redwoodjs/redwood/tree/main/packages/create-redwood-app/template#readme) for the up-to-date version.
 
 ## License
 
