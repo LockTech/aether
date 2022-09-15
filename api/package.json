@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@envelop/sentry": "^3.8.0",
-    "@redwoodjs/api": "2.2.3",
-    "@redwoodjs/graphql-server": "2.2.3",
+    "@redwoodjs/api": "^3.0.0",
+    "@redwoodjs/graphql-server": "^3.0.0",
     "@sentry/node": "^7.12.1",
     "@sentry/tracing": "^7.12.1",
     "email-templates": "^10.0.1",
