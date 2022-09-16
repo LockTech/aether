@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chakra UI - Aether Documentation</title>
+        <title>VSCode File Nesting - Aether Documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -74,7 +74,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Aether</li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../start/install.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../start/config.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../start/local-services.html"><strong aria-hidden="true">4.</strong> Local services</a></li><li class="chapter-item expanded affix "><li class="part-title">Integrations</li><li class="chapter-item expanded "><a href="../integrations/authentication/index.html"><strong aria-hidden="true">5.</strong> Authentication</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../integrations/authentication/multi-tenancy.html"><strong aria-hidden="true">5.1.</strong> Multi-tenancy</a></li><li class="chapter-item expanded "><a href="../integrations/authentication/authorization.html"><strong aria-hidden="true">5.2.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../integrations/chakra-ui.html" class="active"><strong aria-hidden="true">6.</strong> Chakra UI</a></li><li class="chapter-item expanded "><a href="../integrations/emails.html"><strong aria-hidden="true">7.</strong> Sending Emails</a></li><li class="chapter-item expanded "><a href="../integrations/sentry.html"><strong aria-hidden="true">8.</strong> Sentry</a></li><li class="chapter-item expanded "><a href="../integrations/stripe.html"><strong aria-hidden="true">9.</strong> Stripe</a></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../testing/index.html"><strong aria-hidden="true">10.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../testing/back-end.html"><strong aria-hidden="true">11.</strong> Back-end</a></li><li class="chapter-item expanded "><a href="../testing/front-end.html"><strong aria-hidden="true">12.</strong> Front-end</a></li><li class="chapter-item expanded "><a href="../testing/pr-qa.html"><strong aria-hidden="true">13.</strong> PR Quality Assurance</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../extra/vscode-file-nesting.html"><strong aria-hidden="true">14.</strong> VSCode File Nesting</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Aether</li><li class="chapter-item expanded "><a href="../start/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../start/install.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../start/config.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../start/local-services.html"><strong aria-hidden="true">4.</strong> Local services</a></li><li class="chapter-item expanded affix "><li class="part-title">Integrations</li><li class="chapter-item expanded "><a href="../integrations/authentication/index.html"><strong aria-hidden="true">5.</strong> Authentication</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../integrations/authentication/multi-tenancy.html"><strong aria-hidden="true">5.1.</strong> Multi-tenancy</a></li><li class="chapter-item expanded "><a href="../integrations/authentication/authorization.html"><strong aria-hidden="true">5.2.</strong> Authorization</a></li></ol></li><li class="chapter-item expanded "><a href="../integrations/chakra-ui.html"><strong aria-hidden="true">6.</strong> Chakra UI</a></li><li class="chapter-item expanded "><a href="../integrations/emails.html"><strong aria-hidden="true">7.</strong> Sending Emails</a></li><li class="chapter-item expanded "><a href="../integrations/sentry.html"><strong aria-hidden="true">8.</strong> Sentry</a></li><li class="chapter-item expanded "><a href="../integrations/stripe.html"><strong aria-hidden="true">9.</strong> Stripe</a></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../testing/index.html"><strong aria-hidden="true">10.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../testing/back-end.html"><strong aria-hidden="true">11.</strong> Back-end</a></li><li class="chapter-item expanded "><a href="../testing/front-end.html"><strong aria-hidden="true">12.</strong> Front-end</a></li><li class="chapter-item expanded "><a href="../testing/pr-qa.html"><strong aria-hidden="true">13.</strong> PR Quality Assurance</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../extra/vscode-file-nesting.html" class="active"><strong aria-hidden="true">14.</strong> VSCode File Nesting</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -133,23 +133,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chakra-ui"><a class="header" href="#chakra-ui">Chakra UI</a></h1>
-<p>Aether's user interface has been implemented using <a href="https://chakra-ui.com/">Chakra UI</a>.</p>
-<h2 id="form-components"><a class="header" href="#form-components">Form Components</a></h2>
-<p>Provided in the <code>web/src/components/Forms</code> directory are components which combine <a href="https://redwoodjs.com/docs/forms">RedwoodJS' form components</a> with <a href="https://chakra-ui.com/docs/components#form">Chakra UI's</a>.</p>
-<blockquote>
-<p>As of writing, this integration is incomplete, and should eventually be extracted out into a library. Progress on this can be tracked <a href="https://github.com/LockTech/aether/issues/3">via the Aether repository</a>.</p>
-</blockquote>
+                        <h1 id="vscode-explorer-file-nesting"><a class="header" href="#vscode-explorer-file-nesting">VSCode: Explorer File Nesting</a></h1>
+<p>VSCode (version <code>1.67</code> and later) supports <a href="https://code.visualstudio.com/updates/v1_67#_explorer-file-nesting">nesting files</a>, allowing you to drastically decrease the amount of configuration files cluttering your editor. The following should be appended to <code>.vscode/settings.json</code>.</p>
+<pre><code class="language-JSON">{
+  &quot;explorer.fileNesting.enabled&quot;: true,
+  &quot;explorer.fileNesting.expand&quot;: false,
+  &quot;explorer.fileNesting.patterns&quot;: {
+    &quot;.env.defaults&quot;: &quot;*.env, .env.*, env.d.ts&quot;,
+    &quot;.gitignore&quot;: &quot;.gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*&quot;,
+    &quot;index.d.ts&quot;: &quot;*.d.ts&quot;,
+    &quot;package.json&quot;: &quot;.browserslist*, .circleci*, .codecov, .commitlint*, .editorconfig, .eslint*, .firebase*, .flowconfig, .github*, .gitlab*, .gitpod*, .huskyrc*, .jslint*, .lintstagedrc*, .markdownlint*, .mocha*, .node-version, .nodemon*, .npm*, .nvmrc, .pm2*, .pnp.*, .pnpm*, .prettier*, .releaserc*, .sentry*, .stackblitz*, .styleci*, .stylelint*, .tazerc*, .textlint*, .tool-versions, .travis*, .vscode*, .watchman*, .xo-config*, .yamllint*, .yarnrc*, api-extractor.json, apollo.config.*, appveyor*, ava.config.*, azure-pipelines*, bower.json, build.config.*, commitlint*, crowdin*, cypress.json, dangerfile*, docker-compose.yml, dprint.json, firebase.json, grunt*, gulp*, jasmine.*, jenkins*, jest.config.*, jsconfig.*, karma*, lerna*, lint-staged*, nest-cli.*, netlify*, nodemon*, nx.*, package-lock.json, playwright.config.*, pm2.*, pnpm*, prettier*, pullapprove*, puppeteer.config.*, renovate*, rollup.config.*, stylelint*, tsconfig.*, tsdoc.*, tslint*, tsup.config.*, turbo*, typedoc*, vercel*, vetur.config.*, vitest.config.*, webpack.config.*, workspace.json, xo.config.*, yarn*, graphql.config*, redwood.toml, server.config.js&quot;,
+    &quot;readme.*&quot;: &quot;authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md&quot;,
+    &quot;storybook.config.js&quot;: &quot;storybook.*.js&quot;,
+    &quot;App.*&quot;: &quot;App.*, i18n.*, index.html&quot;,
+  }
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../integrations/authentication/authorization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../testing/pr-qa.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a rel="next" href="../integrations/emails.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -157,11 +163,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../integrations/authentication/authorization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../testing/pr-qa.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a rel="next" href="../integrations/emails.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
