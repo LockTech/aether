@@ -25,8 +25,8 @@
 <!-- - [End-to-End]() -->
 - [PR Quality Assurance](testing/pr-qa.md)
 
-<!-- # Recipes
+# Recipes
 
-- [Containerization]()
-- [TypeScript to JavaScript]()
-- [VSCode file-nesting]() -->
+<!-- - [Containerization]() -->
+<!-- - [TypeScript to JavaScript]() -->
+- [VSCode File Nesting](extra/vscode-file-nesting.md)
